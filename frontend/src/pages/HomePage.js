@@ -7,7 +7,7 @@ const HomePage = () => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5001/api/blogs')
+    axios.get('https://api.render.com/deploy/srv-chuclcl269vccp3o3b60?key=lygq1PZ6kYI/api/blogs')
       .then(response => {
         setBlogs(response.data);
       })
@@ -18,11 +18,8 @@ const HomePage = () => {
 
   return (
     <div className="homepage">
-
       <h1 className="head">Blog Lists</h1>
-
       <br/><br/><br/><br/>
-
       <ul className="blog-list">
         {blogs.map(blog => (
           <li key={blog._id} className="blog-item">

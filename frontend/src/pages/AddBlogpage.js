@@ -4,7 +4,7 @@ import 'react-quill/dist/quill.snow.css';
 import './AddBlogPage.css';
 import axios from 'axios';
 
-const AddBlog = () => {
+const AddBlogPage = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
@@ -24,7 +24,7 @@ const AddBlog = () => {
       content
     };
 
-    axios.post('http://localhost:5001/api/blogs', newBlog)
+    axios.post('https://api.render.com/deploy/srv-chuclcl269vccp3o3b60?key=lygq1PZ6kYI/api/blogs', newBlog)
       .then(response => {
         console.log(response.data);
         alert("Blog post added successfully!");
@@ -32,8 +32,8 @@ const AddBlog = () => {
         setContent("");
       })
       .catch(error => {
-        console.error("There was an error creating the blog post:", error);
-        alert("There was an error while adding the blog post. Please try again later.");
+        console.error('There was an error creating the blog post:', error);
+        alert('There was an error while adding the blog post. Please try again later.');
       });
   }
 
@@ -56,5 +56,4 @@ const AddBlog = () => {
   );
 }
 
-export default AddBlog;
-
+export default AddBlogPage;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
 
-function Navbar() {
+function NavBar() {
   return (
     <div className="container">
       <nav className="navbar navbar-fixed">
@@ -14,11 +14,9 @@ function Navbar() {
         </Link>
 
         <div className="tabs">
-
           <button className="tab">
             <Link className="tab" to="/home">Home</Link>
           </button>
-
 
           <button className="tab">
             <Link className="tab" to="/add-blog">Add Blog</Link>
@@ -28,7 +26,6 @@ function Navbar() {
             <Link className="tab" to="/">Logout</Link>
           </button>
 
-
           <span className="glider"></span>
         </div>
       </nav>
@@ -36,5 +33,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
-
+export default NavBar;

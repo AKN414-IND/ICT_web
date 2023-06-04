@@ -7,46 +7,48 @@ import { useParams } from 'react-router-dom';
 
 const EditBlogPage = () => {
   const { id } = useParams();
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
 
   useEffect(() => {
-    axios.get(`http://localhost:5001/api/blogs/${id}`)
+    axios.get(`https://api.render.com/deploy/srv-chuclcl269vccp3o3b60?key=lygq1PZ6kYI/api/blogs/${id}`)
       .then(response => {
         setTitle(response.data.title);
         setContent(response.data.content);
       })
       .catch(error => {
-        console.error("There was an error fetching the blog post:", error);
+        console.error('There was an error fetching the blog post:', error);
       });
   }, [id]);
 
-  const handleTitleChange = (e) => {
+  const handleTitleChange = e => {
     setTitle(e.target.value);
-  }
+  };
 
-  const handleContentChange = (value) => {
+  const handleContentChange = value => {
     setContent(value);
-  }
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
-    axios.put(`http://localhost:5001/api/blogs/${id}`, { title, content })
+    axios
+      .put(`https://api.render.com/deploy/srv-chuclcl269vccp3o3b60?key=lygq1PZ6kYI/api/blogs/${id}`, { title, content })
       .then(response => {
         console.log(response.data);
-        alert("Blog post updated successfully!");
+        alert('Blog post updated successfully!');
       })
       .catch(error => {
-        console.error("There was an error updating the blog post:", error);
-        alert("There was an error while updating the blog post. Please try again later.");
+        console.error('There was an error updating the blog post:', error);
+        alert('There was an error while updating the blog post. Please try again later.');
       });
-  }
+  };
 
   return (
-    <div id='b'>
-
-      <br/><br/><br/><br/>
-
+    <div id="b">
+      <br />
+      <br />
+      <br />
+      <br />
       <form onSubmit={handleSubmit}>
         <label>
           Title:
@@ -54,16 +56,14 @@ const EditBlogPage = () => {
           <input type="text" value={title} onChange={handleTitleChange} required />
         </label>
         <br />
-        <label>
-          Content:
-        </label>
-        <div id ='a' className="quill-container">
+        <label>Content:</label>
+        <div id="a" className="quill-container">
           <ReactQuill value={content} onChange={handleContentChange} />
         </div>
         <button type="submit">Update Blog</button>
       </form>
     </div>
   );
-}
+};
 
 export default EditBlogPage;
