@@ -11,13 +11,12 @@ function LoginPage() {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    axios.post('http://localhost:5001/api/users/login', {
+    axios.post('https://api.render.com/deploy/srv-chuclcl269vccp3o3b60?key=lygq1PZ6kYI/api/users/login', {
       username,
       password
     })
       .then((response) => {
         if (response.status === 200) {
-          
           if (username === 'admin') {
             navigate('/admin-dashboard');
           } else {
@@ -31,29 +30,29 @@ function LoginPage() {
         console.log(error);
         alert('Login failed. Please check your username and password.');
       });
-  }
+  };
 
   const handleRegistration = () => {
     navigate('/register');
-  }
+  };
 
   return (
     <div className="center">
-      <br></br>
-      <br></br>
-      <form class="form">
+      <br />
+      <br />
+      <form className="form">
         <p id="heading">Login</p>
-        <div class="field">
-          <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <div className="field">
+          <svg className="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
           </svg>
-          <input type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Username" className="login-input" />
+          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" className="login-input" />
         </div>
-        <div class="field">
-          <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <div className="field">
+          <svg className="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
           </svg>
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" className="login-input" />
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" className="login-input" />
         </div>
-        <div class="btn">
+        <div className="btn">
           <button type="submit" onClick={handleLogin} className="button1">Login</button>
           <button type="button" onClick={handleRegistration} className="button2">Register</button>
         </div>
