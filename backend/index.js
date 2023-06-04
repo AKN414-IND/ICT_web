@@ -32,5 +32,11 @@ app.use('/api/blogs', blogsRoutes);
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'frontend', 'build')));
-  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html')));
+  app.get('/api/*', (req, res) => res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html')));
 }
+
+// Health Check Route
+app.get('/api/healthz', (req, res) => {
+  res.sendStatus(200);
+});
+
